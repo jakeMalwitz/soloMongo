@@ -1,0 +1,18 @@
+1 - db.createCollection("orders")
+
+2 - db.orders.insert([{ orderDate: new Date("8/29/2016"), orderTotal: 200.00, lineItems: [{"unitPrice": 100.00},{"quantity": 2}, {"productName": "Nikes"}]}, { orderDate: new Date("8/29/2016"), orderTotal: 100.00,
+   lineItems: [{"unitPrice": 50.00},{"quantity": 2}, {"productName": "Books"}]}, { orderDate: new Date("8/29/2016"), orderTotal: 88.00, lineItems: [{"unitPrice": 8.00},{"quantity": 11}, {"productName": "Stuff"}]}])
+
+3 - db.orders.findOne()
+
+4 - db.orders.find().pretty()
+
+5 - db.orders.find({orderDate: {$lt: new Date("1/1/2016")}})
+
+6 - db.orders.find({orderDate: {$gt: new Date("1/1/2016")}})
+
+7 - db.orders.find( { $and: [{ "lineItems.quantity": { $gt: 1 }}, { "lineItems.quantity": { $lt: 50 }}]})
+
+8 - db.orders.update({"_id" : ObjectId("57c490a879459436cfd27704")}, { $set: { "lineItems.0.unitPrice": 42.99}})
+
+9 - db.orders.remove({"_id": ObjectId("57c490a879459436cfd27705")})
